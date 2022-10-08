@@ -1,0 +1,49 @@
+Bug report system.
+
+/devcom
+
+
+[DIALOG LIST]
+TITEL: What would you like to do?
+1. Report a bug
+[DIALOG MSG_BOX]
+"Please describe the bug in detail, roughly what time it occured aswell."
+"ENTER"=Send the report in. "EXIT"= Go back to main dialog.
+"ENTER"= SendPlayerMessage"Thank you for your bug report, it will be checked out.".
+
+
+
+2. Suggestion 
+[DIALOG MSG_BOX]
+"Please enter your suggestion:"
+Sendplayermessage: Thanks for your suggestion.
+
+(DEVELOPER ONLY)
+3. Developer section
+
+[DIALOG LIST]
+1. Bug reports(1=numbers of bug reports not active and not read)
+
+[DIALOG LIST]
+1. IF ITS NOT READ BY ME =""COL_RED"*"COL_GREEN"Juan_Poblete, 2017/12/05 06:15."
+2. IF ITS READ BY ME COLOR_GREY="*"COL_GREEN"Juan_Poblete, 2017/12/05 06:15."
+(SELECTING A REPORT)
+
+[DIALOG LIST]
+1. Mark this report as a confirmed and fixed bug. (Rewards the player who reported the bug with 500,000$ dollars and a message.)
+
+[DIALOG MSGBOX]
+Send this player a personal message:
+2. Mark this report as false/not sure
+
+[DIALOG MSGBOX]
+Send this player a personal message:
+3. SAVE BUG REPORT
+4. TRASH BUG REPORT
+5. DELETE BUG REPORT
+
+{END OF LIST ACTIVE REPORTS}
+2. List saved bugs
+{List all saved bugs, be able to select them there and send them to same menu as before}
+
+

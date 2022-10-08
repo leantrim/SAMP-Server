@@ -1,0 +1,2415 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet href="pawndoc.xsl" type="text/xsl"?>
+<doc source="C:\Documents and Settings\pokeybit\Desktop\samp01b-r2-win32\pawno\evo2.pwn">
+	<assembly>
+		<name>evo2.pwn</name>
+	</assembly>
+	<members>
+
+		<!-- enumerations -->
+
+		<!-- constants -->
+		<member name="C:EOS" value="0">
+			<referrer name="strtok"/>
+		</member>
+		<member name="C:cellmax" value="2147483647">
+			<referrer name="operator!(Float:)"/>
+		</member>
+		<member name="C:cellmin" value="-2147483648">
+			<referrer name="operator-(Float:)"/>
+		</member>
+		<member name="C:false" value="0">
+			<tagname value="bool"/>
+			<referrer name="clearDrag"/>
+			<referrer name="duelEnd"/>
+			<referrer name="duelJoin"/>
+			<referrer name="duelJoinGuest"/>
+			<referrer name="duelQuit"/>
+			<referrer name="duelIsIn"/>
+		</member>
+		<member name="C:true" value="1">
+			<tagname value="bool"/>
+			<referrer name="startDrag"/>
+			<referrer name="duelEnd"/>
+			<referrer name="duelJoin"/>
+			<referrer name="duelJoinGuest"/>
+			<referrer name="duelQuit"/>
+			<referrer name="duelIsIn"/>
+			<referrer name="duelStart"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+
+		<!-- variables -->
+		<member name="F:CashScoreOld">
+			<referrer name="MoneyGrubScoreUpdate"/>
+		</member>
+		<member name="F:DUEL_ArenaPos">
+			<tagname value="Float"/>
+			<referrer name="duelTimerUpdate"/>
+		</member>
+		<member name="F:DUEL_Counter">
+			<referrer name="duelTimerStart"/>
+			<referrer name="duelStart"/>
+		</member>
+		<member name="F:DUEL_GuestPos">
+			<tagname value="Float"/>
+			<referrer name="duelJoinGuest"/>
+		</member>
+		<member name="F:DUEL_Member">
+			<referrer name="duelTimerStart"/>
+			<referrer name="duelTimerUpdate"/>
+			<referrer name="duelEndLastWinner"/>
+			<referrer name="duelEnd"/>
+			<referrer name="duelJoin"/>
+			<referrer name="duelQuit"/>
+			<referrer name="duelGetMemberCount"/>
+			<referrer name="duelIsIn"/>
+		</member>
+		<member name="F:DUEL_SoundPos">
+			<tagname value="Float"/>
+			<referrer name="duelTimerStart"/>
+		</member>
+		<member name="F:DUEL_StartPos">
+			<tagname value="Float"/>
+			<referrer name="duelJoin"/>
+		</member>
+		<member name="F:DUEL_Started">
+			<referrer name="duelEnd"/>
+			<referrer name="duelQuit"/>
+			<referrer name="duelStart"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:DUEL_TimerStart">
+			<referrer name="duelTimerStart"/>
+			<referrer name="duelStart"/>
+		</member>
+		<member name="F:DUEL_TimerUpdate">
+			<referrer name="duelEnd"/>
+			<referrer name="duelJoin"/>
+			<referrer name="duelQuit"/>
+		</member>
+		<member name="F:DUEL_WeaponNames">
+			<referrer name="duelJoin"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:DUEL_Weapons">
+			<referrer name="duelTimerStart"/>
+		</member>
+		<member name="F:bank">
+			<referrer name="PropertyScoreUpdate"/>
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="OnPlayerDisconnect"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+		</member>
+		<member name="F:bounty">
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="OnPlayerDisconnect"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="AutoLockCasinoVehicles"/>
+			<referrer name="OnPlayerDeath"/>
+		</member>
+		<member name="F:casinoVehicles">
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="AutoLockCasinoVehicles"/>
+		</member>
+		<member name="F:checkCoords">
+			<tagname value="Float"/>
+			<referrer name="checkpointUpdate"/>
+		</member>
+		<member name="F:checkpointType">
+			<referrer name="getCheckpointType"/>
+		</member>
+		<member name="F:checkpoints">
+			<tagname value="Float"/>
+			<referrer name="checkpointUpdate"/>
+			<referrer name="SellWangExportVehicle"/>
+		</member>
+		<member name="F:dmCoords">
+			<tagname value="Float"/>
+			<referrer name="DeathmatchUpdate"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+		</member>
+		<member name="F:dmGangs">
+			<referrer name="DeathmatchUpdate"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+		</member>
+		<member name="F:dmNames">
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:dmPlayers">
+			<referrer name="DeathmatchUpdate"/>
+			<referrer name="PropertyScoreUpdate"/>
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+			<referrer name="OnPlayerDeath"/>
+		</member>
+		<member name="F:dmSpawnCoords">
+			<tagname value="Float"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+		</member>
+		<member name="F:dmWarning">
+			<referrer name="DeathmatchUpdate"/>
+			<referrer name="OnPlayerSpawn"/>
+		</member>
+		<member name="F:dmWeapons">
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+		</member>
+		<member name="F:dragCost">
+			<referrer name="clearDrag"/>
+			<referrer name="dragEnd"/>
+			<referrer name="dragEndWinner"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:dragCounter">
+			<referrer name="startDrag"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:dragCreated">
+			<referrer name="clearDrag"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:dragEndArea">
+			<tagname value="Float"/>
+			<referrer name="updateDrag"/>
+		</member>
+		<member name="F:dragMemberCount">
+			<referrer name="startDrag"/>
+			<referrer name="clearDrag"/>
+			<referrer name="dragEnd"/>
+			<referrer name="dragEndWinner"/>
+			<referrer name="updateDrag"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:dragMembers">
+			<referrer name="startDrag"/>
+			<referrer name="clearDrag"/>
+			<referrer name="dragEnd"/>
+			<referrer name="updateDrag"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:dragMembersStatus">
+			<referrer name="startDrag"/>
+			<referrer name="updateDrag"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:dragStart">
+			<referrer name="startDrag"/>
+			<referrer name="clearDrag"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:dragStartArea">
+			<tagname value="Float"/>
+			<referrer name="startDrag"/>
+		</member>
+		<member name="F:dragTime">
+			<referrer name="clearDrag"/>
+			<referrer name="dragEndWinner"/>
+			<referrer name="updateDrag"/>
+		</member>
+		<member name="F:dragTimer">
+			<referrer name="startDrag"/>
+			<referrer name="dragEnd"/>
+			<referrer name="dragEndWinner"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:dragTimer2">
+			<referrer name="startDrag"/>
+			<referrer name="dragEnd"/>
+			<referrer name="dragEndWinner"/>
+		</member>
+		<member name="F:gActivePlayers">
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="OnPlayerDisconnect"/>
+		</member>
+		<member name="F:gCopPlayerSpawns">
+			<tagname value="Float"/>
+			<referrer name="SetPlayerRandomSpawn"/>
+		</member>
+		<member name="F:gLastGaveCash">
+			<referrer name="OnPlayerConnect"/>
+		</member>
+		<member name="F:gRandomPlayerSpawns">
+			<tagname value="Float"/>
+			<referrer name="SetPlayerRandomSpawn"/>
+		</member>
+		<member name="F:gambleAreas">
+			<tagname value="Float"/>
+			<referrer name="GambleUpdate"/>
+		</member>
+		<member name="F:gamblingFee">
+			<referrer name="GambleUpdate"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:gangBank">
+			<referrer name="PlayerLeaveGang"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:gangInfo">
+			<referrer name="PlayerLeaveGang"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="AutoLockCasinoVehicles"/>
+			<referrer name="OnPlayerText"/>
+		</member>
+		<member name="F:gangInvite">
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:gangMembers">
+			<referrer name="PlayerLeaveGang"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="AutoLockCasinoVehicles"/>
+			<referrer name="OnPlayerText"/>
+		</member>
+		<member name="F:gangNames">
+			<referrer name="PlayerLeaveGang"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:iPlayerRole">
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerSpawn"/>
+			<referrer name="SetPlayerRandomSpawn"/>
+			<referrer name="OnPlayerRequestClass"/>
+		</member>
+		<member name="F:pbGameText">
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:playerCheckpoint">
+			<referrer name="getCheckpointType"/>
+			<referrer name="checkpointUpdate"/>
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerEnterCheckpoint"/>
+		</member>
+		<member name="F:playerColors">
+			<referrer name="PlayerLeaveGang"/>
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:playerGang">
+			<referrer name="PlayerLeaveGang"/>
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="AutoLockCasinoVehicles"/>
+			<referrer name="OnPlayerText"/>
+			<referrer name="OnPlayerDeath"/>
+		</member>
+		<member name="F:playerWeapons">
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="OnPlayerDisconnect"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerSpawn"/>
+		</member>
+		<member name="F:propertyEarnings">
+			<referrer name="PropertyScoreUpdate"/>
+			<referrer name="OnPlayerEnterCheckpoint"/>
+		</member>
+		<member name="F:propertyNames">
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerEnterCheckpoint"/>
+		</member>
+		<member name="F:propertyOwner">
+			<referrer name="GambleUpdate"/>
+			<referrer name="PropertyScoreUpdate"/>
+			<referrer name="OnPlayerDisconnect"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="AutoLockCasinoVehicles"/>
+			<referrer name="OnPlayerEnterCheckpoint"/>
+		</member>
+		<member name="F:propertyValues">
+			<referrer name="OnPlayerDisconnect"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerEnterCheckpoint"/>
+		</member>
+		<member name="F:savePos">
+			<referrer name="OnPlayerDisconnect"/>
+		</member>
+		<member name="F:savedInfo">
+			<referrer name="SavedUpdate"/>
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="OnPlayerDisconnect"/>
+		</member>
+		<member name="F:savedNames">
+			<referrer name="SavedUpdate"/>
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="OnPlayerDisconnect"/>
+		</member>
+		<member name="F:savedWeapons">
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="OnPlayerDisconnect"/>
+		</member>
+		<member name="F:spawnWeapons">
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerSpawn"/>
+		</member>
+		<member name="F:vehicleModel">
+			<referrer name="SellWangExportVehicle"/>
+			<referrer name="AddVehicle"/>
+		</member>
+		<member name="F:wantedWangExportVehicle">
+			<referrer name="TimeUpdate"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="SellWangExportVehicle"/>
+		</member>
+		<member name="F:wantedWangExportVehicleNames">
+			<referrer name="TimeUpdate"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="SellWangExportVehicle"/>
+		</member>
+		<member name="F:wantedWangExportVehicles">
+			<referrer name="TimeUpdate"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="SellWangExportVehicle"/>
+		</member>
+		<member name="F:weaponNames">
+			<referrer name="OnPlayerCommandText"/>
+		</member>
+		<member name="F:worldTime">
+			<referrer name="main"/>
+			<referrer name="TimeUpdate"/>
+		</member>
+
+		<!-- functions -->
+		<member name="M:operator!(Float:)" syntax="operator!(Float:)(oper)">
+			<tagname value="bool"/>
+			<stacksize value="1"/>
+			<dependency name="cellmax"/>
+			<param name="oper">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator%(_:,Float:)" syntax="operator%(_:,Float:)(oper1, oper2)">
+			<stacksize value="1"/>
+			<param name="oper1">
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator%(Float:,_:)" syntax="operator%(Float:,_:)(oper1, oper2)">
+			<stacksize value="1"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator%(Float:,Float:)" syntax="operator%(Float:,Float:)(oper1, oper2)">
+			<stacksize value="1"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator!=(Float:,_:)" syntax="operator!=(Float:,_:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<referrer name="isPlayerInRectangle"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator!=(Float:,Float:)" syntax="operator!=(Float:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator-(_:,Float:)" syntax="operator-(_:,Float:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatsub"/>
+			<param name="oper1">
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator-(Float:,_:)" syntax="operator-(Float:,_:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatsub"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator+(Float:,_:)" syntax="operator+(Float:,_:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatadd"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator/(_:,Float:)" syntax="operator/(_:,Float:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatdiv"/>
+			<param name="oper1">
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator/(Float:,_:)" syntax="operator/(Float:,_:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatdiv"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator*(Float:,_:)" syntax="operator*(Float:,_:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatmul"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator++(Float:)" syntax="operator++(Float:)(oper)">
+			<tagname value="Float"/>
+			<stacksize value="1"/>
+			<dependency name="operator+(Float:,Float:)"/>
+			<param name="oper">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator-(Float:)" syntax="operator-(Float:)(oper)">
+			<tagname value="Float"/>
+			<stacksize value="1"/>
+			<dependency name="cellmin"/>
+			<param name="oper">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator--(Float:)" syntax="operator--(Float:)(oper)">
+			<tagname value="Float"/>
+			<stacksize value="1"/>
+			<dependency name="operator-(Float:,Float:)"/>
+			<param name="oper">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator-(Float:,Float:)" syntax="operator-(Float:,Float:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="operator--(Float:)"/>
+			<referrer name="isPlayerInRectangle"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator+(Float:,Float:)" syntax="operator+(Float:,Float:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="operator++(Float:)"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator/(Float:,Float:)" syntax="operator/(Float:,Float:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="isPlayerInRectangle"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator*(Float:,Float:)" syntax="operator*(Float:,Float:)(oper1, oper2)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="isPlayerInRectangle"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:Float:operator=(_:)" syntax="Float:operator=(_:)(oper)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="DeathmatchUpdate"/>
+			<referrer name="checkpointUpdate"/>
+			<referrer name="isPlayerInRectangle"/>
+			<referrer name="duelTimerStart"/>
+			<referrer name="duelQuit"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+			<param name="oper">
+			</param>
+		</member>
+		<member name="M:operator==(Float:,Float:)" syntax="operator==(Float:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator==(Float:,_:)" syntax="operator==(Float:,_:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator&gt;(Float:,Float:)" syntax="operator&gt;(Float:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator&gt;(Float:,_:)" syntax="operator&gt;(Float:,_:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator&gt;(_:,Float:)" syntax="operator&gt;(_:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator&gt;=(Float:,Float:)" syntax="operator&gt;=(Float:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<referrer name="isPlayerInArea"/>
+			<referrer name="PayPlayerInArea"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator&gt;=(Float:,_:)" syntax="operator&gt;=(Float:,_:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator&gt;=(_:,Float:)" syntax="operator&gt;=(_:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator&lt;(Float:,Float:)" syntax="operator&lt;(Float:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator&lt;(Float:,_:)" syntax="operator&lt;(Float:,_:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<referrer name="isPlayerInRectangle"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator&lt;(_:,Float:)" syntax="operator&lt;(_:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator&lt;=(Float:,Float:)" syntax="operator&lt;=(Float:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<referrer name="isPlayerInArea"/>
+			<referrer name="PayPlayerInArea"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:operator&lt;=(Float:,_:)" syntax="operator&lt;=(Float:,_:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+			</param>
+		</member>
+		<member name="M:operator&lt;=(_:,Float:)" syntax="operator&lt;=(_:,Float:)(oper1, oper2)">
+			<tagname value="bool"/>
+			<stacksize value="4"/>
+			<dependency name="float"/>
+			<dependency name="floatcmp"/>
+			<param name="oper1">
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:@receivepacket" syntax="@receivepacket(packet[], size, source[])">
+			<stacksize value="1"/>
+			<param name="packet">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="size">
+			</param>
+			<param name="source">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:@receivestring" syntax="@receivestring(message[], source[])">
+			<stacksize value="1"/>
+			<param name="message">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="source">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:AddPlayerClass" syntax="AddPlayerClass(modelid, spawn_x, spawn_y, spawn_z, z_angle, weapon1, weapon1_ammo, weapon2, weapon2_ammo, weapon3, weapon3_ammo)">
+			<attribute name="native"/>
+			<referrer name="OnGameModeInit"/>
+			<param name="modelid">
+			</param>
+			<param name="spawn_x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="spawn_y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="spawn_z">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z_angle">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="weapon1">
+			</param>
+			<param name="weapon1_ammo">
+			</param>
+			<param name="weapon2">
+			</param>
+			<param name="weapon2_ammo">
+			</param>
+			<param name="weapon3">
+			</param>
+			<param name="weapon3_ammo">
+			</param>
+		</member>
+		<member name="M:AddStaticPickup" syntax="AddStaticPickup(model, type, X, Y, Z)">
+			<attribute name="native"/>
+			<referrer name="OnGameModeInit"/>
+			<param name="model">
+			</param>
+			<param name="type">
+			</param>
+			<param name="X">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="Y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="Z">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:AddStaticVehicle" syntax="AddStaticVehicle(modelid, spawn_x, spawn_y, spawn_z, z_angle, color1, color2)">
+			<attribute name="native"/>
+			<referrer name="OnGameModeInit"/>
+			<param name="modelid">
+			</param>
+			<param name="spawn_x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="spawn_y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="spawn_z">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z_angle">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="color1">
+			</param>
+			<param name="color2">
+			</param>
+		</member>
+		<member name="M:AddVehicle" syntax="AddVehicle(modelid, spawn_x, spawn_y, spawn_z, z_angle, color1, color2)">
+			<attribute name="public"/>
+			<stacksize value="10"/>
+			<referrer name="AddVehicle"/>
+			<dependency name="vehicleModel"/>
+			<param name="modelid">
+			</param>
+			<param name="spawn_x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="spawn_y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="spawn_z">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z_angle">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="color1">
+			</param>
+			<param name="color2">
+			</param>
+		</member>
+		<member name="M:AutoLockCasinoVehicles" syntax="AutoLockCasinoVehicles(playerid)">
+			<attribute name="public"/>
+			<stacksize value="318"/>
+			<referrer name="PlayerLeaveGang"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerSpawn"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="GetPlayerState"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="IsPlayerInVehicle"/>
+			<dependency name="SendClientMessageToAll"/>
+			<dependency name="SetVehicleParamsForPlayer"/>
+			<dependency name="bounty"/>
+			<dependency name="casinoVehicles"/>
+			<dependency name="format"/>
+			<dependency name="gangInfo"/>
+			<dependency name="gangMembers"/>
+			<dependency name="playerGang"/>
+			<dependency name="propertyOwner"/>
+			<dependency name="random"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:DeathmatchUpdate" syntax="DeathmatchUpdate()">
+			<attribute name="public"/>
+			<stacksize value="8"/>
+			<dependency name="Float:operator=(_:)"/>
+			<dependency name="GameTextForPlayer"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="ResetPlayerMoney"/>
+			<dependency name="SetPlayerHealth"/>
+			<dependency name="dmCoords"/>
+			<dependency name="dmGangs"/>
+			<dependency name="dmPlayers"/>
+			<dependency name="dmWarning"/>
+			<dependency name="isPlayerInArea"/>
+		</member>
+		<member name="M:DisablePlayerCheckpoint" syntax="DisablePlayerCheckpoint(playerid)">
+			<attribute name="native"/>
+			<referrer name="checkpointUpdate"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:GambleUpdate" syntax="GambleUpdate()">
+			<attribute name="public"/>
+			<stacksize value="290"/>
+			<dependency name="GetPlayerMoney"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="GivePlayerMoney"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="SendClientMessage"/>
+			<dependency name="format"/>
+			<dependency name="gambleAreas"/>
+			<dependency name="gamblingFee"/>
+			<dependency name="isPlayerInArea"/>
+			<dependency name="propertyOwner"/>
+		</member>
+		<member name="M:GameModeExit" syntax="GameModeExit()">
+			<attribute name="native"/>
+			<referrer name="GameModeExitFunc"/>
+		</member>
+		<member name="M:GameModeExitFunc" syntax="GameModeExitFunc()">
+			<attribute name="public"/>
+			<stacksize value="2"/>
+			<dependency name="GameModeExit"/>
+		</member>
+		<member name="M:GameTextForAll" syntax="GameTextForAll(string[], time, style)">
+			<attribute name="native"/>
+			<referrer name="OnPlayerCommandText"/>
+			<param name="string">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="time">
+			</param>
+			<param name="style">
+			</param>
+		</member>
+		<member name="M:GameTextForPlayer" syntax="GameTextForPlayer(playerid, string[], time, style)">
+			<attribute name="native"/>
+			<referrer name="DeathmatchUpdate"/>
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="startDrag"/>
+			<referrer name="duelTimerStart"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerRequestClass"/>
+			<param name="playerid">
+			</param>
+			<param name="string">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="time">
+			</param>
+			<param name="style">
+			</param>
+		</member>
+		<member name="M:GetPlayerMoney" syntax="GetPlayerMoney(playerid)">
+			<attribute name="native"/>
+			<referrer name="GambleUpdate"/>
+			<referrer name="MoneyGrubScoreUpdate"/>
+			<referrer name="OnPlayerDisconnect"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+			<referrer name="OnPlayerSpawn"/>
+			<referrer name="OnPlayerDeath"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:GetPlayerName" syntax="GetPlayerName(playerid, name[], len)">
+			<attribute name="native"/>
+			<referrer name="PlayerLeaveGang"/>
+			<referrer name="GambleUpdate"/>
+			<referrer name="MoneyGrubScoreUpdate"/>
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="OnPlayerDisconnect"/>
+			<referrer name="startDrag"/>
+			<referrer name="dragEndWinner"/>
+			<referrer name="duelEndLastWinner"/>
+			<referrer name="duelJoin"/>
+			<referrer name="duelJoinGuest"/>
+			<referrer name="duelQuit"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="AutoLockCasinoVehicles"/>
+			<referrer name="OnPlayerText"/>
+			<referrer name="OnPlayerDeath"/>
+			<referrer name="OnPlayerEnterCheckpoint"/>
+			<param name="playerid">
+			</param>
+			<param name="name">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="len">
+			</param>
+		</member>
+		<member name="M:GetPlayerPos" syntax="GetPlayerPos(playerid, &amp;x, &amp;y, &amp;z)">
+			<attribute name="native"/>
+			<referrer name="isPlayerInArea"/>
+			<referrer name="PayPlayerInArea"/>
+			<referrer name="isPlayerInRectangle"/>
+			<referrer name="OnPlayerCommandText"/>
+			<param name="playerid">
+			</param>
+			<param name="x">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:GetPlayerScore" syntax="GetPlayerScore(playerid)">
+			<attribute name="native"/>
+			<referrer name="OnPlayerDeath"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:GetPlayerState" syntax="GetPlayerState(playerid)">
+			<attribute name="native"/>
+			<referrer name="UnlockVehicleUpdate"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="AutoLockCasinoVehicles"/>
+			<referrer name="SellWangExportVehicle"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:GetPlayerVehicleID" syntax="GetPlayerVehicleID(playerid)">
+			<attribute name="native"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="SellWangExportVehicle"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:GetTickCount" syntax="GetTickCount()">
+			<attribute name="native"/>
+			<referrer name="OnPlayerConnect"/>
+		</member>
+		<member name="M:GivePlayerMoney" syntax="GivePlayerMoney(playerid, money)">
+			<attribute name="native"/>
+			<referrer name="PayPlayerInArea"/>
+			<referrer name="GambleUpdate"/>
+			<referrer name="PropertyScoreUpdate"/>
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="OnPlayerDisconnect"/>
+			<referrer name="dragEnd"/>
+			<referrer name="dragEndWinner"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="SellWangExportVehicle"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+			<referrer name="OnPlayerSpawn"/>
+			<referrer name="OnPlayerDeath"/>
+			<param name="playerid">
+			</param>
+			<param name="money">
+			</param>
+		</member>
+		<member name="M:GivePlayerWeapon" syntax="GivePlayerWeapon(playerid, weaponid, ammo)">
+			<attribute name="native"/>
+			<referrer name="duelTimerStart"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+			<referrer name="OnPlayerSpawn"/>
+			<param name="playerid">
+			</param>
+			<param name="weaponid">
+			</param>
+			<param name="ammo">
+			</param>
+		</member>
+		<member name="M:Givecashdelaytimer" syntax="Givecashdelaytimer(playerid)">
+			<stacksize value="1"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:IsPlayerAdmin" syntax="IsPlayerAdmin(playerid)">
+			<attribute name="native"/>
+			<referrer name="OnPlayerCommandText"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:IsPlayerConnected" syntax="IsPlayerConnected(playerid)">
+			<attribute name="native"/>
+			<referrer name="PayPlayerInArea"/>
+			<referrer name="UnlockVehicleUpdate"/>
+			<referrer name="DeathmatchUpdate"/>
+			<referrer name="GambleUpdate"/>
+			<referrer name="checkpointUpdate"/>
+			<referrer name="PropertyScoreUpdate"/>
+			<referrer name="MoneyGrubScoreUpdate"/>
+			<referrer name="startDrag"/>
+			<referrer name="dragEnd"/>
+			<referrer name="dragEndWinner"/>
+			<referrer name="updateDrag"/>
+			<referrer name="duelTimerStart"/>
+			<referrer name="duelTimerUpdate"/>
+			<referrer name="duelEndLastWinner"/>
+			<referrer name="duelJoinGuest"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="AutoLockCasinoVehicles"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:IsPlayerInAnyVehicle" syntax="IsPlayerInAnyVehicle(playerid)">
+			<attribute name="native"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="SellWangExportVehicle"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:IsPlayerInCheckpoint" syntax="IsPlayerInCheckpoint(playerid)">
+			<attribute name="native"/>
+			<referrer name="OnPlayerCommandText"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:IsPlayerInVehicle" syntax="IsPlayerInVehicle(playerid, vehicleid)">
+			<attribute name="native"/>
+			<referrer name="UnlockVehicleUpdate"/>
+			<referrer name="AutoLockCasinoVehicles"/>
+			<param name="playerid">
+			</param>
+			<param name="vehicleid">
+			</param>
+		</member>
+		<member name="M:KillTimer" syntax="KillTimer(timerid)">
+			<attribute name="native"/>
+			<referrer name="startDrag"/>
+			<referrer name="dragEnd"/>
+			<referrer name="dragEndWinner"/>
+			<referrer name="duelTimerStart"/>
+			<referrer name="duelEnd"/>
+			<referrer name="duelJoin"/>
+			<referrer name="duelQuit"/>
+			<referrer name="duelStart"/>
+			<referrer name="OnPlayerCommandText"/>
+			<param name="timerid">
+			</param>
+		</member>
+		<member name="M:MoneyGrubScoreUpdate" syntax="MoneyGrubScoreUpdate()">
+			<attribute name="public"/>
+			<stacksize value="31"/>
+			<dependency name="CashScoreOld"/>
+			<dependency name="GetPlayerMoney"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="SetPlayerScore"/>
+		</member>
+		<member name="M:OnGameModeInit" syntax="OnGameModeInit()">
+			<attribute name="public"/>
+			<stacksize value="13"/>
+			<dependency name="AddPlayerClass"/>
+			<dependency name="AddStaticPickup"/>
+			<dependency name="AddStaticVehicle"/>
+			<dependency name="SetGameModeText"/>
+			<dependency name="SetTimer"/>
+			<dependency name="ShowNameTags"/>
+			<dependency name="ShowPlayerMarkers"/>
+		</member>
+		<member name="M:OnPlayerCommandText" syntax="OnPlayerCommandText(playerid, cmdtext[])">
+			<attribute name="public"/>
+			<stacksize value="859"/>
+			<dependency name="Float:operator=(_:)"/>
+			<dependency name="AutoLockCasinoVehicles"/>
+			<dependency name="DUEL_Started"/>
+			<dependency name="DUEL_WeaponNames"/>
+			<dependency name="DUEL_WeaponNames"/>
+			<dependency name="GameTextForAll"/>
+			<dependency name="GameTextForPlayer"/>
+			<dependency name="GetPlayerMoney"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="GetPlayerPos"/>
+			<dependency name="GetPlayerState"/>
+			<dependency name="GetPlayerVehicleID"/>
+			<dependency name="GivePlayerMoney"/>
+			<dependency name="GivePlayerWeapon"/>
+			<dependency name="IsPlayerAdmin"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="IsPlayerInAnyVehicle"/>
+			<dependency name="IsPlayerInCheckpoint"/>
+			<dependency name="KillTimer"/>
+			<dependency name="OnPlayerEnterDeathmatch"/>
+			<dependency name="PlayerLeaveGang"/>
+			<dependency name="PlayerPlaySound"/>
+			<dependency name="SendClientMessage"/>
+			<dependency name="SendClientMessageToAll"/>
+			<dependency name="SetPlayerColor"/>
+			<dependency name="SetPlayerHealth"/>
+			<dependency name="SetPlayerInterior"/>
+			<dependency name="SetPlayerPos"/>
+			<dependency name="SetTimer"/>
+			<dependency name="SetVehicleParamsForPlayer"/>
+			<dependency name="bank"/>
+			<dependency name="bounty"/>
+			<dependency name="casinoVehicles"/>
+			<dependency name="dmCoords"/>
+			<dependency name="dmGangs"/>
+			<dependency name="dmGangs"/>
+			<dependency name="dmNames"/>
+			<dependency name="dmNames"/>
+			<dependency name="dmPlayers"/>
+			<dependency name="dmWeapons"/>
+			<dependency name="dragCost"/>
+			<dependency name="dragCounter"/>
+			<dependency name="dragCreated"/>
+			<dependency name="dragEnd"/>
+			<dependency name="dragMemberCount"/>
+			<dependency name="dragMembers"/>
+			<dependency name="dragMembersStatus"/>
+			<dependency name="dragStart"/>
+			<dependency name="dragTimer"/>
+			<dependency name="duelGetMemberCount"/>
+			<dependency name="duelIsIn"/>
+			<dependency name="duelJoin"/>
+			<dependency name="duelJoinGuest"/>
+			<dependency name="duelStart"/>
+			<dependency name="format"/>
+			<dependency name="gamblingFee"/>
+			<dependency name="gangBank"/>
+			<dependency name="gangInfo"/>
+			<dependency name="gangInfo"/>
+			<dependency name="gangInvite"/>
+			<dependency name="gangMembers"/>
+			<dependency name="gangMembers"/>
+			<dependency name="gangNames"/>
+			<dependency name="gangNames"/>
+			<dependency name="getCheckpointType"/>
+			<dependency name="iPlayerRole"/>
+			<dependency name="isPlayerInArea"/>
+			<dependency name="pbGameText"/>
+			<dependency name="playerCheckpoint"/>
+			<dependency name="playerColors"/>
+			<dependency name="playerGang"/>
+			<dependency name="playerWeapons"/>
+			<dependency name="printf"/>
+			<dependency name="propertyNames"/>
+			<dependency name="propertyNames"/>
+			<dependency name="propertyOwner"/>
+			<dependency name="propertyValues"/>
+			<dependency name="spawnWeapons"/>
+			<dependency name="spawnWeapons"/>
+			<dependency name="strcmp"/>
+			<dependency name="strlen"/>
+			<dependency name="strtok"/>
+			<dependency name="strval"/>
+			<dependency name="true"/>
+			<dependency name="wantedWangExportVehicle"/>
+			<dependency name="wantedWangExportVehicleNames"/>
+			<dependency name="wantedWangExportVehicleNames"/>
+			<dependency name="wantedWangExportVehicles"/>
+			<dependency name="weaponNames"/>
+			<dependency name="weaponNames"/>
+			<param name="playerid">
+			</param>
+			<param name="cmdtext">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:OnPlayerConnect" syntax="OnPlayerConnect(playerid)">
+			<attribute name="public"/>
+			<stacksize value="31"/>
+			<dependency name="GameTextForPlayer"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="GetTickCount"/>
+			<dependency name="GivePlayerMoney"/>
+			<dependency name="SendClientMessage"/>
+			<dependency name="SendPlayerFormattedText"/>
+			<dependency name="bank"/>
+			<dependency name="bounty"/>
+			<dependency name="dmPlayers"/>
+			<dependency name="gActivePlayers"/>
+			<dependency name="gLastGaveCash"/>
+			<dependency name="gangInvite"/>
+			<dependency name="isStringSame"/>
+			<dependency name="playerCheckpoint"/>
+			<dependency name="playerGang"/>
+			<dependency name="playerWeapons"/>
+			<dependency name="playerWeapons"/>
+			<dependency name="savedInfo"/>
+			<dependency name="savedInfo"/>
+			<dependency name="savedNames"/>
+			<dependency name="savedNames"/>
+			<dependency name="savedWeapons"/>
+			<dependency name="savedWeapons"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:OnPlayerDeath" syntax="OnPlayerDeath(playerid, killerid, reason)">
+			<attribute name="public"/>
+			<stacksize value="288"/>
+			<dependency name="GetPlayerMoney"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="GetPlayerScore"/>
+			<dependency name="GivePlayerMoney"/>
+			<dependency name="ResetPlayerMoney"/>
+			<dependency name="SendClientMessage"/>
+			<dependency name="SendDeathMessage"/>
+			<dependency name="SetPlayerScore"/>
+			<dependency name="SetPlayerWorldBounds"/>
+			<dependency name="bounty"/>
+			<dependency name="dmPlayers"/>
+			<dependency name="duelOnPlayerLeave"/>
+			<dependency name="format"/>
+			<dependency name="playerGang"/>
+			<param name="playerid">
+			</param>
+			<param name="killerid">
+			</param>
+			<param name="reason">
+			</param>
+		</member>
+		<member name="M:OnPlayerDisconnect" syntax="OnPlayerDisconnect(playerid)">
+			<attribute name="public"/>
+			<stacksize value="30"/>
+			<dependency name="GetPlayerMoney"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="GivePlayerMoney"/>
+			<dependency name="PlayerLeaveGang"/>
+			<dependency name="bank"/>
+			<dependency name="bounty"/>
+			<dependency name="duelOnPlayerLeave"/>
+			<dependency name="format"/>
+			<dependency name="gActivePlayers"/>
+			<dependency name="playerWeapons"/>
+			<dependency name="playerWeapons"/>
+			<dependency name="propertyOwner"/>
+			<dependency name="propertyValues"/>
+			<dependency name="savePos"/>
+			<dependency name="savedInfo"/>
+			<dependency name="savedInfo"/>
+			<dependency name="savedNames"/>
+			<dependency name="savedWeapons"/>
+			<dependency name="savedWeapons"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:OnPlayerEnterCheckpoint" syntax="OnPlayerEnterCheckpoint(playerid)">
+			<attribute name="public"/>
+			<stacksize value="287"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="SellWangExportVehicle"/>
+			<dependency name="SendClientMessage"/>
+			<dependency name="SetPlayerPos"/>
+			<dependency name="format"/>
+			<dependency name="getCheckpointType"/>
+			<dependency name="playerCheckpoint"/>
+			<dependency name="propertyEarnings"/>
+			<dependency name="propertyNames"/>
+			<dependency name="propertyNames"/>
+			<dependency name="propertyOwner"/>
+			<dependency name="propertyValues"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:OnPlayerEnterDeathmatch" syntax="OnPlayerEnterDeathmatch(playerid, gangnum, zone)">
+			<attribute name="public"/>
+			<stacksize value="264"/>
+			<referrer name="OnPlayerCommandText"/>
+			<dependency name="Float:operator=(_:)"/>
+			<dependency name="GetPlayerMoney"/>
+			<dependency name="GetPlayerVehicleID"/>
+			<dependency name="GivePlayerMoney"/>
+			<dependency name="GivePlayerWeapon"/>
+			<dependency name="IsPlayerInAnyVehicle"/>
+			<dependency name="ResetPlayerWeapons"/>
+			<dependency name="SendClientMessage"/>
+			<dependency name="SetPlayerHealth"/>
+			<dependency name="SetPlayerPos"/>
+			<dependency name="SetPlayerWorldBounds"/>
+			<dependency name="SetVehicleToRespawn"/>
+			<dependency name="bank"/>
+			<dependency name="dmCoords"/>
+			<dependency name="dmGangs"/>
+			<dependency name="dmPlayers"/>
+			<dependency name="dmSpawnCoords"/>
+			<dependency name="dmWeapons"/>
+			<dependency name="format"/>
+			<param name="playerid">
+			</param>
+			<param name="gangnum">
+			</param>
+			<param name="zone">
+			</param>
+		</member>
+		<member name="M:OnPlayerRequestClass" syntax="OnPlayerRequestClass(playerid, classid)">
+			<attribute name="public"/>
+			<stacksize value="6"/>
+			<dependency name="GameTextForPlayer"/>
+			<dependency name="SetupPlayerForClassSelection"/>
+			<dependency name="iPlayerRole"/>
+			<param name="playerid">
+			</param>
+			<param name="classid">
+			</param>
+		</member>
+		<member name="M:OnPlayerSpawn" syntax="OnPlayerSpawn(playerid)">
+			<attribute name="public"/>
+			<stacksize value="6"/>
+			<dependency name="AutoLockCasinoVehicles"/>
+			<dependency name="GetPlayerMoney"/>
+			<dependency name="GivePlayerMoney"/>
+			<dependency name="GivePlayerWeapon"/>
+			<dependency name="ResetPlayerWeapons"/>
+			<dependency name="SetPlayerInterior"/>
+			<dependency name="SetPlayerRandomSpawn"/>
+			<dependency name="dmWarning"/>
+			<dependency name="iPlayerRole"/>
+			<dependency name="playerWeapons"/>
+			<dependency name="spawnWeapons"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:OnPlayerText" syntax="OnPlayerText(playerid, text[])">
+			<attribute name="public"/>
+			<stacksize value="543"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="SendClientMessage"/>
+			<dependency name="format"/>
+			<dependency name="gangInfo"/>
+			<dependency name="gangMembers"/>
+			<dependency name="playerGang"/>
+			<dependency name="strlen"/>
+			<dependency name="strmid"/>
+			<param name="playerid">
+			</param>
+			<param name="text">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:PayPlayerInArea" syntax="PayPlayerInArea(playerID, x1, y1, x2, y2, cash)">
+			<attribute name="public"/>
+			<stacksize value="9"/>
+			<referrer name="PirateShipScoreUpdate"/>
+			<dependency name="operator&gt;=(Float:,Float:)"/>
+			<dependency name="operator&lt;=(Float:,Float:)"/>
+			<dependency name="GetPlayerPos"/>
+			<dependency name="GivePlayerMoney"/>
+			<dependency name="IsPlayerConnected"/>
+			<param name="playerID">
+			</param>
+			<param name="x1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="x2">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y2">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="cash">
+			</param>
+		</member>
+		<member name="M:PirateShipScoreUpdate" syntax="PirateShipScoreUpdate()">
+			<attribute name="public"/>
+			<stacksize value="10"/>
+			<dependency name="PayPlayerInArea"/>
+		</member>
+		<member name="M:PlayerLeaveGang" syntax="PlayerLeaveGang(playerid)">
+			<attribute name="public"/>
+			<stacksize value="289"/>
+			<referrer name="OnPlayerDisconnect"/>
+			<referrer name="OnPlayerCommandText"/>
+			<dependency name="AutoLockCasinoVehicles"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="SendClientMessage"/>
+			<dependency name="SetPlayerColor"/>
+			<dependency name="format"/>
+			<dependency name="gangBank"/>
+			<dependency name="gangInfo"/>
+			<dependency name="gangInfo"/>
+			<dependency name="gangMembers"/>
+			<dependency name="gangMembers"/>
+			<dependency name="gangNames"/>
+			<dependency name="gangNames"/>
+			<dependency name="playerColors"/>
+			<dependency name="playerGang"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:PlayerPlaySound" syntax="PlayerPlaySound(playerid, soundid, x, y, z)">
+			<attribute name="native"/>
+			<referrer name="startDrag"/>
+			<referrer name="duelTimerStart"/>
+			<referrer name="OnPlayerCommandText"/>
+			<param name="playerid">
+			</param>
+			<param name="soundid">
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:PropertyScoreUpdate" syntax="PropertyScoreUpdate()">
+			<attribute name="public"/>
+			<stacksize value="291"/>
+			<dependency name="GivePlayerMoney"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="SendClientMessage"/>
+			<dependency name="bank"/>
+			<dependency name="dmPlayers"/>
+			<dependency name="format"/>
+			<dependency name="propertyEarnings"/>
+			<dependency name="propertyOwner"/>
+		</member>
+		<member name="M:ResetPlayerMoney" syntax="ResetPlayerMoney(playerid)">
+			<attribute name="native"/>
+			<referrer name="DeathmatchUpdate"/>
+			<referrer name="OnPlayerDeath"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:ResetPlayerWeapons" syntax="ResetPlayerWeapons(playerid)">
+			<attribute name="native"/>
+			<referrer name="duelJoin"/>
+			<referrer name="duelJoinGuest"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+			<referrer name="OnPlayerSpawn"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:SavedUpdate" syntax="SavedUpdate()">
+			<attribute name="public"/>
+			<stacksize value="2"/>
+			<dependency name="savedInfo"/>
+			<dependency name="savedInfo"/>
+			<dependency name="savedNames"/>
+			<dependency name="savedNames"/>
+		</member>
+		<member name="M:SellWangExportVehicle" syntax="SellWangExportVehicle(playerid)">
+			<attribute name="public"/>
+			<stacksize value="266"/>
+			<referrer name="OnPlayerEnterCheckpoint"/>
+			<dependency name="GetPlayerState"/>
+			<dependency name="GetPlayerVehicleID"/>
+			<dependency name="GivePlayerMoney"/>
+			<dependency name="IsPlayerInAnyVehicle"/>
+			<dependency name="SendClientMessage"/>
+			<dependency name="SetPlayerPos"/>
+			<dependency name="SetVehicleToRespawn"/>
+			<dependency name="checkpoints"/>
+			<dependency name="format"/>
+			<dependency name="random"/>
+			<dependency name="vehicleModel"/>
+			<dependency name="wantedWangExportVehicle"/>
+			<dependency name="wantedWangExportVehicleNames"/>
+			<dependency name="wantedWangExportVehicleNames"/>
+			<dependency name="wantedWangExportVehicles"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:SendAllFormattedText" syntax="SendAllFormattedText(playerid, str[], define)">
+			<attribute name="public"/>
+			<stacksize value="262"/>
+			<dependency name="SendClientMessageToAll"/>
+			<dependency name="format"/>
+			<param name="playerid">
+			</param>
+			<param name="str">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="define">
+			</param>
+		</member>
+		<member name="M:SendClientMessage" syntax="SendClientMessage(playerid, color, message[])">
+			<attribute name="native"/>
+			<referrer name="PlayerLeaveGang"/>
+			<referrer name="GambleUpdate"/>
+			<referrer name="PropertyScoreUpdate"/>
+			<referrer name="OnPlayerConnect"/>
+			<referrer name="dragEnd"/>
+			<referrer name="dragEndWinner"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="SellWangExportVehicle"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+			<referrer name="OnPlayerText"/>
+			<referrer name="OnPlayerDeath"/>
+			<referrer name="OnPlayerEnterCheckpoint"/>
+			<referrer name="SendPlayerFormattedText"/>
+			<param name="playerid">
+			</param>
+			<param name="color">
+			</param>
+			<param name="message">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:SendClientMessageToAll" syntax="SendClientMessageToAll(color, message[])">
+			<attribute name="native"/>
+			<referrer name="TimeUpdate"/>
+			<referrer name="startDrag"/>
+			<referrer name="dragEnd"/>
+			<referrer name="dragEndWinner"/>
+			<referrer name="duelEndLastWinner"/>
+			<referrer name="duelJoin"/>
+			<referrer name="duelJoinGuest"/>
+			<referrer name="duelQuit"/>
+			<referrer name="duelStart"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="AutoLockCasinoVehicles"/>
+			<referrer name="SendAllFormattedText"/>
+			<param name="color">
+			</param>
+			<param name="message">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:SendDeathMessage" syntax="SendDeathMessage(killer, killee, weapon)">
+			<attribute name="native"/>
+			<referrer name="OnPlayerDeath"/>
+			<param name="killer">
+			</param>
+			<param name="killee">
+			</param>
+			<param name="weapon">
+			</param>
+		</member>
+		<member name="M:SendPlayerFormattedText" syntax="SendPlayerFormattedText(playerid, str[], define)">
+			<attribute name="public"/>
+			<stacksize value="262"/>
+			<referrer name="OnPlayerConnect"/>
+			<dependency name="SendClientMessage"/>
+			<dependency name="format"/>
+			<param name="playerid">
+			</param>
+			<param name="str">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="define">
+			</param>
+		</member>
+		<member name="M:SetGameModeText" syntax="SetGameModeText(string[])">
+			<attribute name="native"/>
+			<referrer name="OnGameModeInit"/>
+			<param name="string">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:SetPlayerCameraLookAt" syntax="SetPlayerCameraLookAt(playerid, x, y, z)">
+			<attribute name="native"/>
+			<referrer name="SetupPlayerForClassSelection"/>
+			<param name="playerid">
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:SetPlayerCameraPos" syntax="SetPlayerCameraPos(playerid, x, y, z)">
+			<attribute name="native"/>
+			<referrer name="SetupPlayerForClassSelection"/>
+			<param name="playerid">
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:SetPlayerCheckpoint" syntax="SetPlayerCheckpoint(playerid, x, y, z, size)">
+			<attribute name="native"/>
+			<referrer name="checkpointUpdate"/>
+			<param name="playerid">
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="size">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:SetPlayerColor" syntax="SetPlayerColor(playerid, color)">
+			<attribute name="native"/>
+			<referrer name="PlayerLeaveGang"/>
+			<referrer name="OnPlayerCommandText"/>
+			<param name="playerid">
+			</param>
+			<param name="color">
+			</param>
+		</member>
+		<member name="M:SetPlayerFacingAngle" syntax="SetPlayerFacingAngle(playerid, ang)">
+			<attribute name="native"/>
+			<referrer name="duelJoin"/>
+			<referrer name="SetPlayerRandomSpawn"/>
+			<referrer name="SetupPlayerForClassSelection"/>
+			<param name="playerid">
+			</param>
+			<param name="ang">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:SetPlayerHealth" syntax="SetPlayerHealth(playerid, health)">
+			<attribute name="native"/>
+			<referrer name="DeathmatchUpdate"/>
+			<referrer name="duelTimerStart"/>
+			<referrer name="duelQuit"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+			<param name="playerid">
+			</param>
+			<param name="health">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:SetPlayerInterior" syntax="SetPlayerInterior(playerid, interiorid)">
+			<attribute name="native"/>
+			<referrer name="duelJoin"/>
+			<referrer name="duelJoinGuest"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerSpawn"/>
+			<referrer name="SetupPlayerForClassSelection"/>
+			<param name="playerid">
+			</param>
+			<param name="interiorid">
+			</param>
+		</member>
+		<member name="M:SetPlayerPos" syntax="SetPlayerPos(playerid, x, y, z)">
+			<attribute name="native"/>
+			<referrer name="duelJoin"/>
+			<referrer name="duelJoinGuest"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="SellWangExportVehicle"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+			<referrer name="SetPlayerRandomSpawn"/>
+			<referrer name="OnPlayerEnterCheckpoint"/>
+			<referrer name="SetupPlayerForClassSelection"/>
+			<param name="playerid">
+			</param>
+			<param name="x">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="z">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:SetPlayerRandomSpawn" syntax="SetPlayerRandomSpawn(playerid)">
+			<attribute name="public"/>
+			<stacksize value="7"/>
+			<referrer name="OnPlayerSpawn"/>
+			<dependency name="SetPlayerFacingAngle"/>
+			<dependency name="SetPlayerPos"/>
+			<dependency name="gCopPlayerSpawns"/>
+			<dependency name="gRandomPlayerSpawns"/>
+			<dependency name="iPlayerRole"/>
+			<dependency name="random"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:SetPlayerScore" syntax="SetPlayerScore(playerid, score)">
+			<attribute name="native"/>
+			<referrer name="MoneyGrubScoreUpdate"/>
+			<referrer name="OnPlayerDeath"/>
+			<param name="playerid">
+			</param>
+			<param name="score">
+			</param>
+		</member>
+		<member name="M:SetPlayerWorldBounds" syntax="SetPlayerWorldBounds(playerid, x_max, x_min, y_max, y_min)">
+			<attribute name="native"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+			<referrer name="OnPlayerDeath"/>
+			<param name="playerid">
+			</param>
+			<param name="x_max">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="x_min">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y_max">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="y_min">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:SetTimer" syntax="SetTimer(funcname[], interval, repeating)">
+			<attribute name="native"/>
+			<referrer name="startDrag"/>
+			<referrer name="duelJoin"/>
+			<referrer name="duelStart"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnGameModeInit"/>
+			<param name="funcname">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="interval">
+			</param>
+			<param name="repeating">
+			</param>
+		</member>
+		<member name="M:SetVehicleParamsForPlayer" syntax="SetVehicleParamsForPlayer(vehicleid, playerid, objective, doorslocked)">
+			<attribute name="native"/>
+			<referrer name="UnlockVehicleUpdate"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="AutoLockCasinoVehicles"/>
+			<param name="vehicleid">
+			</param>
+			<param name="playerid">
+			</param>
+			<param name="objective">
+			</param>
+			<param name="doorslocked">
+			</param>
+		</member>
+		<member name="M:SetVehicleToRespawn" syntax="SetVehicleToRespawn(vehicleid)">
+			<attribute name="native"/>
+			<referrer name="SellWangExportVehicle"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+			<param name="vehicleid">
+			</param>
+		</member>
+		<member name="M:SetWorldTime" syntax="SetWorldTime(hour)">
+			<attribute name="native"/>
+			<referrer name="TimeUpdate"/>
+			<param name="hour">
+			</param>
+		</member>
+		<member name="M:SetupPlayerForClassSelection" syntax="SetupPlayerForClassSelection(playerid)">
+			<attribute name="public"/>
+			<stacksize value="6"/>
+			<referrer name="OnPlayerRequestClass"/>
+			<dependency name="SetPlayerCameraLookAt"/>
+			<dependency name="SetPlayerCameraPos"/>
+			<dependency name="SetPlayerFacingAngle"/>
+			<dependency name="SetPlayerInterior"/>
+			<dependency name="SetPlayerPos"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:ShowNameTags" syntax="ShowNameTags(show)">
+			<attribute name="native"/>
+			<referrer name="OnGameModeInit"/>
+			<param name="show">
+			</param>
+		</member>
+		<member name="M:ShowPlayerMarkers" syntax="ShowPlayerMarkers(show)">
+			<attribute name="native"/>
+			<referrer name="OnGameModeInit"/>
+			<param name="show">
+			</param>
+		</member>
+		<member name="M:TimeUpdate" syntax="TimeUpdate()">
+			<attribute name="public"/>
+			<stacksize value="263"/>
+			<dependency name="SendClientMessageToAll"/>
+			<dependency name="SetWorldTime"/>
+			<dependency name="format"/>
+			<dependency name="random"/>
+			<dependency name="wantedWangExportVehicle"/>
+			<dependency name="wantedWangExportVehicleNames"/>
+			<dependency name="wantedWangExportVehicleNames"/>
+			<dependency name="wantedWangExportVehicles"/>
+			<dependency name="worldTime"/>
+		</member>
+		<member name="M:UnlockVehicleUpdate" syntax="UnlockVehicleUpdate()">
+			<attribute name="public"/>
+			<stacksize value="9"/>
+			<dependency name="GetPlayerState"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="IsPlayerInVehicle"/>
+			<dependency name="SetVehicleParamsForPlayer"/>
+		</member>
+		<member name="M:checkpointUpdate" syntax="checkpointUpdate()">
+			<attribute name="public"/>
+			<stacksize value="9"/>
+			<dependency name="Float:operator=(_:)"/>
+			<dependency name="DisablePlayerCheckpoint"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="SetPlayerCheckpoint"/>
+			<dependency name="checkCoords"/>
+			<dependency name="checkpoints"/>
+			<dependency name="isPlayerInArea"/>
+			<dependency name="playerCheckpoint"/>
+		</member>
+		<member name="M:clearDrag" syntax="clearDrag()">
+			<attribute name="public"/>
+			<stacksize value="2"/>
+			<referrer name="dragEnd"/>
+			<referrer name="dragEndWinner"/>
+			<dependency name="dragCost"/>
+			<dependency name="dragCreated"/>
+			<dependency name="dragMemberCount"/>
+			<dependency name="dragMembers"/>
+			<dependency name="dragStart"/>
+			<dependency name="dragTime"/>
+			<dependency name="false"/>
+		</member>
+		<member name="M:dragEnd" syntax="dragEnd()">
+			<attribute name="public"/>
+			<stacksize value="6"/>
+			<referrer name="updateDrag"/>
+			<referrer name="OnPlayerCommandText"/>
+			<dependency name="GivePlayerMoney"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="KillTimer"/>
+			<dependency name="SendClientMessage"/>
+			<dependency name="SendClientMessageToAll"/>
+			<dependency name="clearDrag"/>
+			<dependency name="dragCost"/>
+			<dependency name="dragMemberCount"/>
+			<dependency name="dragMembers"/>
+			<dependency name="dragTimer"/>
+			<dependency name="dragTimer2"/>
+			<dependency name="print"/>
+		</member>
+		<member name="M:dragEndWinner" syntax="dragEndWinner(id)">
+			<attribute name="public"/>
+			<stacksize value="289"/>
+			<referrer name="updateDrag"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="GivePlayerMoney"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="KillTimer"/>
+			<dependency name="SendClientMessage"/>
+			<dependency name="SendClientMessageToAll"/>
+			<dependency name="clearDrag"/>
+			<dependency name="dragCost"/>
+			<dependency name="dragMemberCount"/>
+			<dependency name="dragTime"/>
+			<dependency name="dragTimer"/>
+			<dependency name="dragTimer2"/>
+			<dependency name="format"/>
+			<param name="id">
+			</param>
+		</member>
+		<member name="M:duelEnd" syntax="duelEnd()">
+			<attribute name="public"/>
+			<stacksize value="5"/>
+			<referrer name="duelEndLastWinner"/>
+			<dependency name="DUEL_Member"/>
+			<dependency name="DUEL_Started"/>
+			<dependency name="DUEL_TimerUpdate"/>
+			<dependency name="KillTimer"/>
+			<dependency name="duelQuit"/>
+			<dependency name="false"/>
+			<dependency name="true"/>
+		</member>
+		<member name="M:duelEndLastWinner" syntax="duelEndLastWinner()">
+			<attribute name="public"/>
+			<stacksize value="287"/>
+			<referrer name="duelQuit"/>
+			<dependency name="DUEL_Member"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="SendClientMessageToAll"/>
+			<dependency name="duelEnd"/>
+			<dependency name="format"/>
+		</member>
+		<member name="M:duelGetMemberCount" syntax="duelGetMemberCount()">
+			<attribute name="public"/>
+			<stacksize value="3"/>
+			<referrer name="duelQuit"/>
+			<referrer name="OnPlayerCommandText"/>
+			<dependency name="DUEL_Member"/>
+		</member>
+		<member name="M:duelIsIn" syntax="duelIsIn(playerid)">
+			<attribute name="public"/>
+			<stacksize value="2"/>
+			<referrer name="OnPlayerCommandText"/>
+			<dependency name="DUEL_Member"/>
+			<dependency name="false"/>
+			<dependency name="true"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:duelJoin" syntax="duelJoin(playerid, weaponid)">
+			<attribute name="public"/>
+			<stacksize value="365"/>
+			<referrer name="OnPlayerCommandText"/>
+			<dependency name="DUEL_Member"/>
+			<dependency name="DUEL_Member"/>
+			<dependency name="DUEL_StartPos"/>
+			<dependency name="DUEL_TimerUpdate"/>
+			<dependency name="DUEL_WeaponNames"/>
+			<dependency name="DUEL_WeaponNames"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="KillTimer"/>
+			<dependency name="ResetPlayerWeapons"/>
+			<dependency name="SendClientMessageToAll"/>
+			<dependency name="SetPlayerFacingAngle"/>
+			<dependency name="SetPlayerInterior"/>
+			<dependency name="SetPlayerPos"/>
+			<dependency name="SetTimer"/>
+			<dependency name="false"/>
+			<dependency name="format"/>
+			<dependency name="true"/>
+			<param name="playerid">
+			</param>
+			<param name="weaponid">
+			</param>
+		</member>
+		<member name="M:duelJoinGuest" syntax="duelJoinGuest(playerid)">
+			<attribute name="public"/>
+			<stacksize value="286"/>
+			<referrer name="OnPlayerCommandText"/>
+			<dependency name="DUEL_GuestPos"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="ResetPlayerWeapons"/>
+			<dependency name="SendClientMessageToAll"/>
+			<dependency name="SetPlayerInterior"/>
+			<dependency name="SetPlayerPos"/>
+			<dependency name="false"/>
+			<dependency name="format"/>
+			<dependency name="true"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:duelOnPlayerLeave" syntax="duelOnPlayerLeave(playerid)">
+			<attribute name="public"/>
+			<stacksize value="4"/>
+			<referrer name="OnPlayerDisconnect"/>
+			<referrer name="duelQuit"/>
+			<referrer name="OnPlayerDeath"/>
+			<dependency name="duelQuit"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:duelQuit" syntax="duelQuit(playerid)">
+			<attribute name="public"/>
+			<stacksize value="363"/>
+			<referrer name="duelTimerUpdate"/>
+			<referrer name="duelOnPlayerLeave"/>
+			<referrer name="duelEnd"/>
+			<dependency name="Float:operator=(_:)"/>
+			<dependency name="DUEL_Member"/>
+			<dependency name="DUEL_Member"/>
+			<dependency name="DUEL_Started"/>
+			<dependency name="DUEL_TimerUpdate"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="KillTimer"/>
+			<dependency name="SendClientMessageToAll"/>
+			<dependency name="SetPlayerHealth"/>
+			<dependency name="duelEndLastWinner"/>
+			<dependency name="duelGetMemberCount"/>
+			<dependency name="duelOnPlayerLeave"/>
+			<dependency name="false"/>
+			<dependency name="format"/>
+			<dependency name="true"/>
+			<param name="playerid">
+			</param>
+		</member>
+		<member name="M:duelStart" syntax="duelStart()">
+			<attribute name="public"/>
+			<stacksize value="5"/>
+			<referrer name="OnPlayerCommandText"/>
+			<dependency name="DUEL_Counter"/>
+			<dependency name="DUEL_Started"/>
+			<dependency name="DUEL_TimerStart"/>
+			<dependency name="KillTimer"/>
+			<dependency name="SendClientMessageToAll"/>
+			<dependency name="SetTimer"/>
+			<dependency name="true"/>
+		</member>
+		<member name="M:duelTimerStart" syntax="duelTimerStart()">
+			<attribute name="public"/>
+			<stacksize value="264"/>
+			<dependency name="Float:operator=(_:)"/>
+			<dependency name="DUEL_Counter"/>
+			<dependency name="DUEL_Member"/>
+			<dependency name="DUEL_SoundPos"/>
+			<dependency name="DUEL_TimerStart"/>
+			<dependency name="DUEL_Weapons"/>
+			<dependency name="GameTextForPlayer"/>
+			<dependency name="GivePlayerWeapon"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="KillTimer"/>
+			<dependency name="PlayerPlaySound"/>
+			<dependency name="SetPlayerHealth"/>
+			<dependency name="format"/>
+		</member>
+		<member name="M:duelTimerUpdate" syntax="duelTimerUpdate()">
+			<attribute name="public"/>
+			<stacksize value="6"/>
+			<dependency name="DUEL_ArenaPos"/>
+			<dependency name="DUEL_Member"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="duelQuit"/>
+			<dependency name="isPlayerInRectangle"/>
+		</member>
+		<member name="M:float" syntax="float(value)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="operator*(Float:,_:)"/>
+			<referrer name="operator/(Float:,_:)"/>
+			<referrer name="operator/(_:,Float:)"/>
+			<referrer name="operator+(Float:,_:)"/>
+			<referrer name="operator-(Float:,_:)"/>
+			<referrer name="operator-(_:,Float:)"/>
+			<referrer name="operator==(Float:,_:)"/>
+			<referrer name="operator!=(Float:,_:)"/>
+			<referrer name="operator&gt;(Float:,_:)"/>
+			<referrer name="operator&gt;(_:,Float:)"/>
+			<referrer name="operator&gt;=(Float:,_:)"/>
+			<referrer name="operator&gt;=(_:,Float:)"/>
+			<referrer name="operator&lt;(Float:,_:)"/>
+			<referrer name="operator&lt;(_:,Float:)"/>
+			<referrer name="operator&lt;=(Float:,_:)"/>
+			<referrer name="operator&lt;=(_:,Float:)"/>
+			<param name="value">
+			</param>
+		</member>
+		<member name="M:floatadd" syntax="floatadd(oper1, oper2)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="operator+(Float:,_:)"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:floatcmp" syntax="floatcmp(oper1, oper2)">
+			<attribute name="native"/>
+			<referrer name="operator==(Float:,Float:)"/>
+			<referrer name="operator==(Float:,_:)"/>
+			<referrer name="operator!=(Float:,Float:)"/>
+			<referrer name="operator!=(Float:,_:)"/>
+			<referrer name="operator&gt;(Float:,Float:)"/>
+			<referrer name="operator&gt;(Float:,_:)"/>
+			<referrer name="operator&gt;(_:,Float:)"/>
+			<referrer name="operator&gt;=(Float:,Float:)"/>
+			<referrer name="operator&gt;=(Float:,_:)"/>
+			<referrer name="operator&gt;=(_:,Float:)"/>
+			<referrer name="operator&lt;(Float:,Float:)"/>
+			<referrer name="operator&lt;(Float:,_:)"/>
+			<referrer name="operator&lt;(_:,Float:)"/>
+			<referrer name="operator&lt;=(Float:,Float:)"/>
+			<referrer name="operator&lt;=(Float:,_:)"/>
+			<referrer name="operator&lt;=(_:,Float:)"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:floatdiv" syntax="floatdiv(dividend, divisor)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="operator/(Float:,_:)"/>
+			<referrer name="operator/(_:,Float:)"/>
+			<param name="dividend">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="divisor">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:floatmul" syntax="floatmul(oper1, oper2)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="operator*(Float:,_:)"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:floatsub" syntax="floatsub(oper1, oper2)">
+			<tagname value="Float"/>
+			<attribute name="native"/>
+			<referrer name="operator-(Float:,_:)"/>
+			<referrer name="operator-(_:,Float:)"/>
+			<param name="oper1">
+				<paraminfo>Float </paraminfo>
+			</param>
+			<param name="oper2">
+				<paraminfo>Float </paraminfo>
+			</param>
+		</member>
+		<member name="M:format" syntax="format(output[], len, format[], ...)">
+			<attribute name="native"/>
+			<referrer name="PlayerLeaveGang"/>
+			<referrer name="TimeUpdate"/>
+			<referrer name="GambleUpdate"/>
+			<referrer name="PropertyScoreUpdate"/>
+			<referrer name="OnPlayerDisconnect"/>
+			<referrer name="startDrag"/>
+			<referrer name="dragEndWinner"/>
+			<referrer name="duelTimerStart"/>
+			<referrer name="duelEndLastWinner"/>
+			<referrer name="duelJoin"/>
+			<referrer name="duelJoinGuest"/>
+			<referrer name="duelQuit"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="AutoLockCasinoVehicles"/>
+			<referrer name="SellWangExportVehicle"/>
+			<referrer name="OnPlayerEnterDeathmatch"/>
+			<referrer name="OnPlayerText"/>
+			<referrer name="OnPlayerDeath"/>
+			<referrer name="OnPlayerEnterCheckpoint"/>
+			<referrer name="SendPlayerFormattedText"/>
+			<referrer name="SendAllFormattedText"/>
+			<param name="output">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="len">
+			</param>
+			<param name="format">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="...">
+				<paraminfo> {Float,_} </paraminfo>
+			</param>
+		</member>
+		<member name="M:getCheckpointType" syntax="getCheckpointType(playerID)">
+			<attribute name="public"/>
+			<stacksize value="1"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerEnterCheckpoint"/>
+			<dependency name="checkpointType"/>
+			<dependency name="playerCheckpoint"/>
+			<param name="playerID">
+			</param>
+		</member>
+		<member name="M:isPlayerInArea" syntax="isPlayerInArea(playerID, data[])">
+			<attribute name="public"/>
+			<stacksize value="9"/>
+			<referrer name="DeathmatchUpdate"/>
+			<referrer name="GambleUpdate"/>
+			<referrer name="checkpointUpdate"/>
+			<referrer name="OnPlayerCommandText"/>
+			<dependency name="operator&gt;=(Float:,Float:)"/>
+			<dependency name="operator&lt;=(Float:,Float:)"/>
+			<dependency name="GetPlayerPos"/>
+			<param name="playerID">
+			</param>
+			<param name="data">
+				<paraminfo>Float [4] </paraminfo>
+			</param>
+		</member>
+		<member name="M:isPlayerInRectangle" syntax="isPlayerInRectangle(playerID, data[])">
+			<attribute name="public"/>
+			<stacksize value="11"/>
+			<referrer name="startDrag"/>
+			<referrer name="updateDrag"/>
+			<referrer name="duelTimerUpdate"/>
+			<dependency name="operator!=(Float:,_:)"/>
+			<dependency name="operator-(Float:,Float:)"/>
+			<dependency name="operator/(Float:,Float:)"/>
+			<dependency name="operator*(Float:,Float:)"/>
+			<dependency name="Float:operator=(_:)"/>
+			<dependency name="operator&lt;(Float:,_:)"/>
+			<dependency name="GetPlayerPos"/>
+			<param name="playerID">
+			</param>
+			<param name="data">
+				<paraminfo>Float [8] </paraminfo>
+			</param>
+		</member>
+		<member name="M:isStringSame" syntax="isStringSame(string1[], string2[], len)">
+			<stacksize value="2"/>
+			<referrer name="OnPlayerConnect"/>
+			<param name="string1">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="string2">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="len">
+			</param>
+		</member>
+		<member name="M:main" syntax="main()">
+			<attribute name="entry"/>
+			<stacksize value="3"/>
+			<dependency name="print"/>
+			<dependency name="worldTime"/>
+		</member>
+		<member name="M:print" syntax="print(string[])">
+			<attribute name="native"/>
+			<referrer name="main"/>
+			<referrer name="dragEnd"/>
+			<param name="string">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:printf" syntax="printf(format[], ...)">
+			<attribute name="native"/>
+			<referrer name="OnPlayerCommandText"/>
+			<param name="format">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="...">
+				<paraminfo> {Float,_} </paraminfo>
+			</param>
+		</member>
+		<member name="M:random" syntax="random(max)">
+			<attribute name="native"/>
+			<referrer name="TimeUpdate"/>
+			<referrer name="AutoLockCasinoVehicles"/>
+			<referrer name="SellWangExportVehicle"/>
+			<referrer name="SetPlayerRandomSpawn"/>
+			<param name="max">
+			</param>
+		</member>
+		<member name="M:startDrag" syntax="startDrag()">
+			<attribute name="public"/>
+			<stacksize value="288"/>
+			<dependency name="GameTextForPlayer"/>
+			<dependency name="GetPlayerName"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="KillTimer"/>
+			<dependency name="PlayerPlaySound"/>
+			<dependency name="SendClientMessageToAll"/>
+			<dependency name="SetTimer"/>
+			<dependency name="dragCounter"/>
+			<dependency name="dragMemberCount"/>
+			<dependency name="dragMembers"/>
+			<dependency name="dragMembersStatus"/>
+			<dependency name="dragStart"/>
+			<dependency name="dragStartArea"/>
+			<dependency name="dragTimer"/>
+			<dependency name="dragTimer2"/>
+			<dependency name="format"/>
+			<dependency name="isPlayerInRectangle"/>
+			<dependency name="true"/>
+		</member>
+		<member name="M:strcmp" syntax="strcmp(string1[], string2[], ignorecase, length)">
+			<attribute name="native"/>
+			<referrer name="OnPlayerCommandText"/>
+			<param name="string1">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="string2">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="ignorecase">
+				<paraminfo>bool </paraminfo>
+			</param>
+			<param name="length">
+			</param>
+		</member>
+		<member name="M:strlen" syntax="strlen(string[])">
+			<attribute name="native"/>
+			<referrer name="OnPlayerCommandText"/>
+			<referrer name="OnPlayerText"/>
+			<referrer name="strtok"/>
+			<param name="string">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:strmid" syntax="strmid(dest[], source[], start, end, maxlength)">
+			<attribute name="native"/>
+			<referrer name="OnPlayerText"/>
+			<param name="dest">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="source">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="start">
+			</param>
+			<param name="end">
+			</param>
+			<param name="maxlength">
+			</param>
+		</member>
+		<member name="M:strtok" syntax="strtok(string[], &amp;index)">
+			<stacksize value="23"/>
+			<referrer name="OnPlayerCommandText"/>
+			<dependency name="EOS"/>
+			<dependency name="strlen"/>
+			<dependency name="strtok"/>
+			<param name="string">
+				<paraminfo> [] </paraminfo>
+			</param>
+			<param name="index">
+				<paraminfo> &amp; </paraminfo>
+			</param>
+		</member>
+		<member name="M:strval" syntax="strval(string[])">
+			<attribute name="native"/>
+			<referrer name="OnPlayerCommandText"/>
+			<param name="string">
+				<paraminfo> [] </paraminfo>
+			</param>
+		</member>
+		<member name="M:updateDrag" syntax="updateDrag()">
+			<attribute name="public"/>
+			<stacksize value="6"/>
+			<dependency name="IsPlayerConnected"/>
+			<dependency name="dragEnd"/>
+			<dependency name="dragEndArea"/>
+			<dependency name="dragEndWinner"/>
+			<dependency name="dragMemberCount"/>
+			<dependency name="dragMembers"/>
+			<dependency name="dragMembersStatus"/>
+			<dependency name="dragTime"/>
+			<dependency name="isPlayerInRectangle"/>
+		</member>
+
+	</members>
+</doc>
